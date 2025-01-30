@@ -41,6 +41,16 @@ bot.on("message", async (msg) => {
       const result = await model.generateContent(`Test savoli va variantlar: ${userData[chatId].testQuestion}`);
       const aiResponse = result.response.text();
       bot.sendMessage(chatId, `**Test natijasi**\n\nSavol:\n${userData[chatId].testQuestion}\n\n**Javob:**\n${aiResponse}`, { parse_mode: "Markdown" });
+
+      // Testni yechib bo'lgandan so'ng, yangi tugmalarni yuborish
+      const keyboard = [
+        [{ text: "Test yechish" }],
+        [{ text: "Rasm orqali test yechish" }],
+      ];
+      bot.sendMessage(chatId, "Yana biror testni ishkashni xohlaysizmi?", {
+        reply_markup: { keyboard, resize_keyboard: true, one_time_keyboard: true }
+      });
+
       delete userData[chatId];
     } catch (error) {
       console.error(error);
@@ -48,6 +58,7 @@ bot.on("message", async (msg) => {
     }
   }
 });
+
 
 bot.on("photo", async (msg) => {
   const chatId = msg.chat.id;
@@ -64,7 +75,13 @@ bot.on("photo", async (msg) => {
     } catch (error) {
       console.error(error);
       bot.sendMessage(chatId, "Rasmni tahlil qilishda xatolik yuz berdi. Iltimos, boshqa rasm yuboring.");
-    }
+    }const keyboard = [
+      [{ text: "Test yechish" }],
+      [{ text: "Rasm orqali test yechish" }],
+    ];
+    bot.sendMessage(chatId, "Yana biror testni ishkashni xohlaysizmi?", {
+      reply_markup: { keyboard, resize_keyboard: true, one_time_keyboard: true }
+    });
   }
 });
 
