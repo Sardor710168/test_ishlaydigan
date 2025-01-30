@@ -29,7 +29,17 @@ bot.on("message", async (msg) => {
   const userMessage = msg.text;
 
   if (userMessage === "Test yechish") {
-    bot.sendMessage(chatId, `Test savolini variantlari bilan birga yuboring.`);
+    bot.sendMessage(chatId, `Test savolini variantlari bilan birga yuboring (masalan: \n1. Choose the correct answer.
+ My friends often go to ... cinema.
+ A) the B)- C)a D)any
+ 2. Choose the correct answer.
+ In Wales ... of children are adopted every year.
+ A) hundred B) hundreds C) hundred’s
+ D) hundreds’
+ 3. Choose the correct answer.
+ . . . funds are limited, so each will probably pay
+ half the cost of a new watch band.
+ A) Their B) There C) They’re D) There’s)`);
     userData[chatId] = { testMode: true };
   } else if (userMessage === "Rasm orqali test yechish") {
     bot.sendMessage(chatId, "Iltimos, test savollari tushirilgan rasmni yuboring.");
